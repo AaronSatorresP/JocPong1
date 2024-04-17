@@ -4,6 +4,7 @@ import  pygame
 
 import Constants
 from Jugador import Jugador
+from Pilota import Pilota
 
 pygame.init()
 
@@ -13,6 +14,8 @@ rellotge = pygame.time.Clock()
 
 jugador1 = Jugador(10,150,(0,0,255),15,60,5);
 jugador2 = Jugador(575,150,(255,0,0),15,60,5);
+
+pilota = Pilota(120,150,2,2,(255,255,0),10,10);
 gameOver = False
 
 
@@ -23,6 +26,8 @@ def PintaObjectes():
 
     pygame.draw.rect(finestreJoc,jugador1.color,(jugador1.posX, jugador1.posY, jugador1.midaX, jugador1.midaY))
     pygame.draw.rect(finestreJoc, jugador2.color, (jugador2.posX, jugador2.posY, jugador2.midaX, jugador2.midaY))
+
+    pygame.draw.rect(finestreJoc,pilota.color,(pilota.posicion_x,pilota.posicion_y,pilota.midas_x,pilota.midas_y))
 
 
 def manejar_movimiento(jugador, tecla_arriba, tecla_abajo):
