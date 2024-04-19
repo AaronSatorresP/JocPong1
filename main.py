@@ -16,6 +16,8 @@ jugador1 = Jugador(10,150,(0,0,255),15,60,5);
 jugador2 = Jugador(575,150,(255,0,0),15,60,5);
 
 pilota = Pilota(120,150,2,2,(255,255,0),10,10);
+
+
 gameOver = False
 
 
@@ -56,6 +58,13 @@ while  not gameOver:
     PintaObjectes()
 
     DetectaEvents()
+    # Mover la pelota
+    pilota.moure()
+
+    # Verificar si la pelota rebota en los bordes
+    pilota.rebota_vora(Constants.ConstantsMides.AMPLA_ESCENARI[1], Constants.ConstantsMides.ALSADA_ESCENARI[1], jugador1, jugador2)
+
 
     rellotge.tick(30)
     pygame.display.update()
+
