@@ -8,14 +8,25 @@ from Pilota import Pilota
 
 pygame.init()
 
-finestreJoc = pygame.display.set_mode(Constants.ConstantsMides.MARGES_ESCENARI)
+finestreJoc = pygame.display.set_mode(Constants.Constants.ConstantsMides.MARGES_ESCENARI)
 
 rellotge = pygame.time.Clock()
 
-jugador1 = Jugador(10,150,(0,0,255),15,60,5);
-jugador2 = Jugador(575,150,(255,0,0),15,60,5);
+jugador1 = Jugador(Constants.Constants.ConstantsJugadores.X_INICIAL_JUGADOR1,
+                    Constants.Constants.ConstantsJugadores.Y_INICIAL_JUGADOR1,
+                    Constants.Constants.ConstantsJugadores.COLOR_JUGADOR1,
+                    Constants.Constants.ConstantsJugadores.RADIO_JUGADOR1,
+                    Constants.Constants.ConstantsJugadores.ALTURA_JUGADOR1,
+                    Constants.Constants.ConstantsJugadores.VELOCIDAD_JUGADOR1)
 
-pilota = Pilota(120,150,2,2,(255,255,0),10,10);
+jugador2 = Jugador(Constants.Constants.ConstantsJugadores.X_INICIAL_JUGADOR2,
+                    Constants.Constants.ConstantsJugadores.Y_INICIAL_JUGADOR2,
+                    Constants.Constants.ConstantsJugadores.COLOR_JUGADOR2,
+                    Constants.Constants.ConstantsJugadores.RADIO_JUGADOR2,
+                    Constants.Constants.ConstantsJugadores.ALTURA_JUGADOR2,
+                    Constants.Constants.ConstantsJugadores.VELOCIDAD_JUGADOR2)
+
+pilota = Pilota(320,50,2,2,(255,255,0),10,10,(2,2));
 
 
 gameOver = False
@@ -23,8 +34,8 @@ gameOver = False
 
 def PintaObjectes():
 
-    finestreJoc.fill(Constants.ConstantsMides.ConstantsColors.BlAU)
-    pygame.draw.rect(finestreJoc,Constants.ConstantsMides.ConstantsColors.VERD,(Constants.ConstantsMides.AMPLA_ESCENARI, Constants.ConstantsMides.ALSADA_ESCENARI))
+    finestreJoc.fill(Constants.Constants.ConstantsColors.BlAU)
+    pygame.draw.rect(finestreJoc,Constants.Constants.ConstantsColors.VERD,(Constants.Constants.ConstantsMides.AMPLA_ESCENARI, Constants.Constants.ConstantsMides.ALSADA_ESCENARI))
 
     pygame.draw.rect(finestreJoc,jugador1.color,(jugador1.posX, jugador1.posY, jugador1.midaX, jugador1.midaY))
     pygame.draw.rect(finestreJoc, jugador2.color, (jugador2.posX, jugador2.posY, jugador2.midaX, jugador2.midaY))
@@ -37,7 +48,7 @@ def manejar_movimiento(jugador, tecla_arriba, tecla_abajo):
     if keys[tecla_arriba]:
         jugador.posY = max(jugador.posY - jugador.velocidad, 20)
     elif keys[tecla_abajo]:
-        limite_abajo = Constants.ConstantsMides.MARGES_ESCENARI[1] - jugador.midaY - 20
+        limite_abajo = Constants.Constants.ConstantsMides.MARGES_ESCENARI[1] - jugador.midaY - 20
         jugador.posY = min(jugador.posY + jugador.velocidad, limite_abajo)
 
 
@@ -61,8 +72,8 @@ while  not gameOver:
     # Mover la pelota
     pilota.moure()
 
-    # Verificar si la pelota rebota en los bordes
-    pilota.rebota_vora(Constants.ConstantsMides.AMPLA_ESCENARI[1], Constants.ConstantsMides.ALSADA_ESCENARI[1], jugador1, jugador2)
+    # Verifica si la pilota rebota en las vores
+    pilota.rebota_vora(Constants.Constants.ConstantsMides.AMPLA_ESCENARI, Constants.Constants.ConstantsMides.ALSADA_ESCENARI, jugador1,jugador2)
 
 
     rellotge.tick(30)
