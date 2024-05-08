@@ -1,4 +1,9 @@
-class Pilota:
+import pygame
+
+from ObjecteEscenari import ObjecteEscenari
+
+
+class Pilota(ObjecteEscenari):
 
     def __init__(self, posicion_x, posicion_y, velocitat_x, velocitat_y, color, midas_x, midas_y, velocidad_inicial):
         self.posicion_x = posicion_x
@@ -9,6 +14,9 @@ class Pilota:
         self.midas_x = midas_x
         self.midas_y = midas_y
         self.velocidad_inicial = velocidad_inicial
+    def PintaPilota(self,finestreJoc):
+        pygame.draw.rect(finestreJoc, self.color,(self.posicion_x, self.posicion_y, self.midas_x, self.midas_y))
+
 
     def moure(self):
         self.posicion_x += self.velocitat_x

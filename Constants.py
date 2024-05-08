@@ -1,5 +1,7 @@
+from ObjecteEscenari import ObjecteEscenari
 
-class Constants:
+
+class Constants(ObjecteEscenari):
     class ConstantsMides:
 
         MARGES_ESCENARI = (600, 400)

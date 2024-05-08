@@ -37,10 +37,10 @@ def PintaObjectes():
     finestreJoc.fill(Constants.Constants.ConstantsColors.BlAU)
     pygame.draw.rect(finestreJoc,Constants.Constants.ConstantsColors.VERD,(Constants.Constants.ConstantsMides.AMPLA_ESCENARI, Constants.Constants.ConstantsMides.ALSADA_ESCENARI))
 
-    pygame.draw.rect(finestreJoc,jugador1.color,(jugador1.posX, jugador1.posY, jugador1.midaX, jugador1.midaY))
-    pygame.draw.rect(finestreJoc, jugador2.color, (jugador2.posX, jugador2.posY, jugador2.midaX, jugador2.midaY))
+    jugador1.Pinta(finestreJoc)
+    jugador2.Pinta(finestreJoc)
+    pilota.PintaPilota(finestreJoc)
 
-    pygame.draw.rect(finestreJoc,pilota.color,(pilota.posicion_x,pilota.posicion_y,pilota.midas_x,pilota.midas_y))
 
 
 def manejar_movimiento(jugador, tecla_arriba, tecla_abajo):
