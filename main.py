@@ -26,6 +26,8 @@ jugador2 = Jugador(Constants.Constants.ConstantsJugadores.X_INICIAL_JUGADOR2,
                     Constants.Constants.ConstantsJugadores.ALTURA_JUGADOR2,
                     Constants.Constants.ConstantsJugadores.VELOCIDAD_JUGADOR2)
 
+fontText = pygame.font.SysFont("monospace", 35)
+
 pilota = Pilota(320,50,2,2,(255,255,0),10,10,(2,2));
 
 
@@ -41,8 +43,14 @@ def PintaObjectes():
     jugador2.Pinta(finestreJoc)
     pilota.PintaPilota(finestreJoc)
 
+    textJugador1 = "Jugador 1: " + str(jugador1.puntos)
+    textJugador2 = "Jugador 2: " + str(jugador2.puntos)
 
+    etiquetaJugador1 = fontText.render(textJugador1, 1, (255, 255, 255))
+    etiquetaJugador2 = fontText.render(textJugador2, 1, (255, 255, 255))
 
+    finestreJoc.blit(etiquetaJugador1, (10, 10))
+    finestreJoc.blit(etiquetaJugador2, (Constants.Constants.ConstantsMides.AMPLA_ESCENARI[0] - -270, 10))
 def manejar_movimiento(jugador, tecla_arriba, tecla_abajo):
     keys = pygame.key.get_pressed()
     if keys[tecla_arriba]:

@@ -11,6 +11,7 @@ class Jugador(ObjecteEscenari):
         self.midaY = midaY
         self.color = color
         self.velocidad = velocidad
+        self.puntos = 0
 
     def PintaJugador1(self,finestreJoc):
         pygame.draw.rect(finestreJoc, self.color, (self.posX, self.posY, self.midaX, self.midaY))
